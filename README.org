@@ -1,4 +1,4 @@
-* EMMS-Info-Mediainfo
+* EMMS Info Mediainfo
 
 This package provides an EMMS info backend that uses the `mediainfo'
 command-line tool to populate track metadata.

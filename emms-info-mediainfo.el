@@ -13,9 +13,11 @@
 ;; This package provides an EMMS info backend that uses the `mediainfo'
 ;; command-line tool to populate track metadata.
 ;;
-;; `mediainfo' supports a very wide range of audio and video formats and
-;; is often more reliable than ffprobe for certain container types (e.g.
-;; Matroska, MP4, OGG).  The two backends complement each other well.
+;; `mediainfo' supports a very wide range of audio and video formats and is often
+;; more reliable than id3 data alone.  If you use EMMS to play video in addition
+;; to audio, this backend will almost certainly populate information fields for
+;; your video files, regardless of container type (e.g. Maktroska, MP4, OGG).
+;;
 ;;
 ;; Setup (manual):
 ;;
