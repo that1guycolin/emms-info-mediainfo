@@ -1,0 +1,53 @@
+* EMMS-Info-Mediainfo
+
+This package provides an EMMS info backend that uses the `mediainfo'
+command-line tool to populate track metadata.
+
+`mediainfo' supports a very wide range of audio and video formats and is often
+more reliable than id3 data alone. If you use EMMS to play video in addition
+to audio, this backend will almost certainly populate information fields for
+your video files, regardless of container type (e.g. Maktroska, MP4, OGG).
+
+** Setup
+
+You can use this alongside other backends.  Each backend in
+`emms-info-functions' is called in turn; fields already populated by
+an earlier backend are NOT overwritten by later ones, so ordering
+determines priority.
+
+To make mediainfo the primary backend, replace the line beginning
+'(add-to-list...' with:
+
+#+name: override-other-info-functions
+#+begin_src emacs-lisp
+  (setq emms-info-functions '(emms-info-mediainfo))
+#+end_src
+
+*** Manual
+
+#+name: manual-setup
+#+begin_src emacs-lisp
+  (require 'emms-info-mediainfo)
+  (add-to-list 'emms-info-functions #'emms-info-mediainfo)
+#+end_src
+
+*** Use-pacakge
+
+#+name: use-package-setup
+#+begin_src emacs-lisp
+  (use-package emms-info-mediainfo
+    :after emms
+    :config
+    (add-to-list 'emms-info-functions #'emms-info-mediainfo))
+#+end_src
+    
+** Requirements
+- Emacs 27.1 or later  (for `json-parse-string')
+- The `mediainfo' CLI tool installed and on PATH
+#+name:install_mediainfo
+#+begin_src shell
+  # Arch:
+  sudo pacman -S mediainfo
+  # Debian:
+  sudo apt install mediainfo
+#+end_src
